@@ -2,21 +2,27 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TextInputDialog;
 
 public class GUI {
 	Button addNewWord = new Button("Добавить слово");
+	HBox hBox = new HBox();
 	
 	 public void start(Stage primaryStage) {
 		 
-	    addNewWord.setOnAction(event -> { addWord();});	    
+	    addNewWord.setOnAction(event -> { addWord();});
 	    
 		StackPane root = new StackPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
-		root.setAlignment(Pos.BASELINE_RIGHT);
-        root.getChildren().add(addNewWord);
+		hBox.getChildren().add(addNewWord);
+		hBox.setAlignment(Pos.BASELINE_RIGHT);
+        hBox.setSpacing(3);
+		//root.setAlignment(Pos.BASELINE_RIGHT);
+        root.getChildren().add(hBox);
         // Setting up a scene, JavaFX Scene class is the container for all content 
         // which makes the scene visible in a given pixel size. 
         Scene scene = new Scene(root, 800, 600);
