@@ -2,7 +2,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -10,7 +10,8 @@ import javafx.scene.control.TextInputDialog;
 
 public class GUI {
 	Button addNewWord = new Button("Добавить слово");
-	HBox hBox = new HBox();
+	Button saveButton = new Button("Сохранить");
+	VBox hBox = new VBox();
 	
 	 public void start(Stage primaryStage) {
 		 
@@ -19,6 +20,7 @@ public class GUI {
 		StackPane root = new StackPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
 		hBox.getChildren().add(addNewWord);
+		hBox.getChildren().add(saveButton);
 		hBox.setAlignment(Pos.BASELINE_RIGHT);
         hBox.setSpacing(3);
 		//root.setAlignment(Pos.BASELINE_RIGHT);
