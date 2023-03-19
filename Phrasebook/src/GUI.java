@@ -11,7 +11,7 @@ public class GUI {
 	private Button addNewWord = new Button("Добавить слово");
 	private Button saveButton = new Button("Сохранить");
 	private TextField textInput = new TextField();
-	private VBox hBox = new VBox();
+	private VBox hBoxButtons = new VBox();
 	
 	 public void start(Stage primaryStage) {
 		 
@@ -19,12 +19,12 @@ public class GUI {
 	    
 		StackPane root = new StackPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
-		hBox.getChildren().add(addNewWord);
-		hBox.getChildren().add(saveButton);
-		hBox.setAlignment(Pos.BASELINE_RIGHT);
-        hBox.setSpacing(3);
+		hBoxButtons.getChildren().add(addNewWord);
+		hBoxButtons.getChildren().add(saveButton);
+		hBoxButtons.setAlignment(Pos.BASELINE_RIGHT);
+        hBoxButtons.setSpacing(3);
 		//root.setAlignment(Pos.BASELINE_RIGHT);
-        root.getChildren().add(hBox);
+        root.getChildren().add(hBoxButtons);
         root.getChildren().add(textInput);
         // Setting up a scene, JavaFX Scene class is the container for all content 
         // which makes the scene visible in a given pixel size. 
