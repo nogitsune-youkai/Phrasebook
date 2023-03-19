@@ -8,10 +8,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextInputDialog;
 
 public class GUI {
-	Button addNewWord = new Button("Добавить слово");
-	Button saveButton = new Button("Сохранить");
-	TextField textInput = new TextField();
-	VBox hBox = new VBox();
+	private Button addNewWord = new Button("Добавить слово");
+	private Button saveButton = new Button("Сохранить");
+	private TextField textInput = new TextField();
+	private VBox hBox = new VBox();
 	
 	 public void start(Stage primaryStage) {
 		 
