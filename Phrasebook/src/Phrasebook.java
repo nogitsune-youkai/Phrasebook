@@ -13,5 +13,9 @@ public class Phrasebook extends Application{
 		GUI gui = new GUI();
 		gui.start(primaryStage);
 	}
+	
+	public static void main(String[] argc) {
+		launch(argc);
+	}
 }
 	
