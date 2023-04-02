@@ -1,36 +1,35 @@
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.cell.*;
 
 public class GUI {
 	 private Button addNewWord = new Button("Добавить слово");
 	 private Button saveButton = new Button("Сохранить");
-	 private TextArea textInput = new TextArea();
 	 private VBox vBoxButtons = new VBox(); // VBox for buttons
 	 private HBox hBoxText = new HBox();
 	 
-	 
 	 public void start(Stage primaryStage) {
 		
-		
-	    addNewWord.setOnAction(event -> { addWord();});
+		Lexicon lexicon = new Lexicon(); 
+		lexicon.initializeColumns();
+	    addNewWord.setOnAction(event -> { lexicon.add(event);});
 	    
 		StackPane root = new StackPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
-		hBoxText.getChildren().add(textInput);
+		//hBoxText.getChildren().add(textInput);
+		hBoxText.getChildren().add(lexicon.getTable());
 		vBoxButtons.getChildren().add(addNewWord);
 		vBoxButtons.getChildren().add(saveButton);
-		textInput.setMinWidth(694);
-		textInput.setMinHeight(597);
 		hBoxText.getChildren().add(vBoxButtons);
 		hBoxText.setAlignment(Pos.BASELINE_RIGHT);
-		textInput.setEditable(false);
         
 
         root.getChildren().add(hBoxText);
@@ -41,14 +40,5 @@ public class GUI {
         primaryStage.setTitle("Разговорник");
         primaryStage.setScene(scene);
         primaryStage.show();
-	}
-
-	private void addWord() {
-		// Will implement functionality for adding a new words here
-		TextInputDialog inputDialog = new TextInputDialog();
-		inputDialog.setTitle("Добавить новое слово");
-		inputDialog.setContentText("Введите слово или словосочетание");		
-		inputDialog.showAndWait();
-		textInput.appendText(inputDialog.getResult() + "\n");
 	}
 }
