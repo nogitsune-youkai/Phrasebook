@@ -29,10 +29,9 @@ public class Lexicon {
 	}
 	
 	ObservableList<Lexicon> initDictionary() {
-		ObservableList<Lexicon> dictionary = FXCollections.observableArrayList();
-		dictionary.add(new Lexicon("временное слово", "temp word"));
-		table.setItems(dictionary);
-		return dictionary;
+		WordList list = new WordList();
+		table.setItems(list.getList());
+		return list.getList();
 	}
 	
 	
