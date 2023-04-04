@@ -1,4 +1,6 @@
 import javafx.collections.FXCollections;
+
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -7,7 +9,8 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Pair;
 import javafx.scene.layout.*;
-
+import java.io.*;
+import java.util.*;
 public class Lexicon {
 	
 	private String word;
@@ -28,11 +31,22 @@ public class Lexicon {
 		this.meaning = meaning;
 	}
 	
-	ObservableList<Lexicon> initDictionary() {
-		WordList list = new WordList();
-		table.setItems(list.getList());
-		return list.getList();
-	}
+	ObservableList<Lexicon> initDictionary() throws IOException  {
+			ObservableList<Lexicon> dictionary = FXCollections.observableArrayList();
+			File file = new File("WordList.txt");	
+			file.createNewFile();
+		    Scanner scanner = new Scanner(file);
+			while(scanner.hasNextLine()) { 
+				String word = scanner.nextLine();  
+				String translation = scanner.nextLine();
+				dictionary.add(new Lexicon(word, translation));} // Закрываем файл 
+				scanner.close();
+				table.setItems(dictionary);
+				return dictionary;
+		//WordList list = new WordList();
+		//table.setItems(list.getList());
+		//return list.getList();
+}
 	
 	
 	public TableView<Lexicon> getTable() {
