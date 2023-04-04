@@ -1,3 +1,4 @@
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -14,6 +15,7 @@ public class Lexicon {
 	private TableView<Lexicon> table = new TableView<>();
 	private TableColumn<Lexicon, String> wordColumn = new TableColumn<Lexicon, String>("Слово");
 	private TableColumn<Lexicon, String> translationColumn = new TableColumn<Lexicon, String>("Перевод");
+	private ObservableList<Lexicon> lexiconList = FXCollections.observableArrayList();
 	private TextField wordInput = new TextField();
 	private TextField meaningInput = new TextField();
 	
@@ -24,6 +26,13 @@ public class Lexicon {
 	public Lexicon(String word, String meaning) {
 		this.word = word;
 		this.meaning = meaning;
+	}
+	
+	ObservableList<Lexicon> initDictionary() {
+		ObservableList<Lexicon> dictionary = FXCollections.observableArrayList();
+		dictionary.add(new Lexicon("временное слово", "temp word"));
+		table.setItems(dictionary);
+		return dictionary;
 	}
 	
 	
@@ -86,7 +95,7 @@ public class Lexicon {
         inputDialog.getDialogPane().getButtonTypes().add(addwordButton);
 	    inputDialog.showAndWait();
 		Lexicon lexicon = new Lexicon(wordInput.getText(), meaningInput.getText());
-		ObservableList<Lexicon> lexiconList = table.getItems();
+		lexiconList = table.getItems();
 		lexiconList.add(lexicon);
 		table.setItems(lexiconList);
 		wordInput.clear();

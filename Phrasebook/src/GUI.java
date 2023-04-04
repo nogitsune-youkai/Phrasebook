@@ -20,6 +20,7 @@ public class GUI {
 		
 		Lexicon lexicon = new Lexicon(); 
 		lexicon.initializeColumns();
+		lexicon.initDictionary();
 	    addNewWord.setOnAction(event -> { lexicon.add(event);});
 	    
 		StackPane root = new StackPane(); //the root node's size tracks the scene's size and 
