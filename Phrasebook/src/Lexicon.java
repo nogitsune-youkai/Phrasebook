@@ -11,6 +11,7 @@ import javafx.util.Pair;
 import javafx.scene.layout.*;
 import java.io.*;
 import java.util.*;
+
 public class Lexicon {
 	
 	private String word;
@@ -43,9 +44,6 @@ public class Lexicon {
 				scanner.close();
 				table.setItems(dictionary);
 				return dictionary;
-		//WordList list = new WordList();
-		//table.setItems(list.getList());
-		//return list.getList();
 }
 	
 	

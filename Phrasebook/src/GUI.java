@@ -3,14 +3,10 @@ import java.io.IOException;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.cell.*;
 
 public class GUI {
 	 private Button addNewWord = new Button("Добавить слово");
