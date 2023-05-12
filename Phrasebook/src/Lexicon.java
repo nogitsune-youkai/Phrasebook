@@ -22,6 +22,7 @@ public class Lexicon {
 	private ObservableList<Lexicon> lexiconList = FXCollections.observableArrayList();
 	private TextField wordInput = new TextField();
 	private TextField meaningInput = new TextField();
+	private int amountOfWords;
 	
 	
 	public Lexicon() {
@@ -43,6 +44,7 @@ public class Lexicon {
 				dictionary.add(new Lexicon(word, translation));} // Закрываем файл 
 				scanner.close();
 				table.setItems(dictionary);
+				getAmountOfWords();
 				return dictionary;
 }
 	
@@ -86,7 +88,7 @@ public class Lexicon {
 		 table.setMinHeight(579);
 		 table.setMinWidth(694);
 		 wordColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("word")); 
-		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning")); 	 
+		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning"));
 	}
 	
 	public void add(ActionEvent event) {
@@ -112,5 +114,8 @@ public class Lexicon {
 		wordInput.clear();
 		meaningInput.clear();	
 	}
-
+	private int getAmountOfWords() {
+		amountOfWords = table.getItems().size();
+		return amountOfWords;
+	}
 }

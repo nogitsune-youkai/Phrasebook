@@ -13,6 +13,7 @@ public class GUI {
 	 private Button saveButton = new Button("Сохранить");
 	 private VBox vBoxButtons = new VBox(); // VBox for buttons
 	 private HBox hBoxText = new HBox();
+	
 	 
 	 public void start(Stage primaryStage) {
 		
