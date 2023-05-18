@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -86,7 +87,8 @@ public class Lexicon {
 		 table.getColumns().add(wordColumn);
 		 table.getColumns().add(translationColumn);
 		 table.setMinHeight(579);
-		 table.setMinWidth(694);
+		 //table.setMinWidth(694);
+		 table.setMinWidth(550);
 		 wordColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("word")); 
 		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning"));
 	}
