@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,6 +13,9 @@ import java.io.*;
 import java.util.*;
 
 public class Lexicon {
+	
+	private static final double TABLE_HEIGHT = 579;
+	private static final double TABLE_WIDTH = 694;
 	
 	private String word;
 	private String meaning;
@@ -42,8 +44,8 @@ public class Lexicon {
 			while(scanner.hasNextLine()) { 
 				String word = scanner.nextLine();  
 				String translation = scanner.nextLine();
-				dictionary.add(new Lexicon(word, translation));} // Закрываем файл 
-				scanner.close();
+				dictionary.add(new Lexicon(word, translation));} 
+				scanner.close(); // closing file 
 				table.setItems(dictionary);
 				getAmountOfWords();
 				return dictionary;
@@ -86,9 +88,8 @@ public class Lexicon {
 		 wordColumn.setVisible(true);
 		 table.getColumns().add(wordColumn);
 		 table.getColumns().add(translationColumn);
-		 table.setMinHeight(579);
-		 //table.setMinWidth(694);
-		 table.setMinWidth(550);
+		 table.setMinHeight(TABLE_HEIGHT);
+		 table.setMinWidth(TABLE_WIDTH);
 		 wordColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("word")); 
 		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning"));
 	}

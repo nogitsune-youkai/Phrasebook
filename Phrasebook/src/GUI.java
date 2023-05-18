@@ -29,7 +29,8 @@ public class GUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    addNewWord.setOnAction(event -> { lexicon.add(event);});
+	    addNewWord.setOnAction(event -> { lexicon.add(event) ;}
+	    );
 	    
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
