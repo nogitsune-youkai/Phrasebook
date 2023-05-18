@@ -26,6 +26,7 @@ public class Lexicon {
 	private TextField wordInput = new TextField();
 	private TextField meaningInput = new TextField();
 	private int amountOfWords;
+	private boolean isWordAdded;
 	
 	
 	public Lexicon() {
@@ -94,7 +95,7 @@ public class Lexicon {
 		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning"));
 	}
 	
-	public void add(ActionEvent event) {
+	public void add(ActionEvent event) {	
 		Dialog<Pair<String, String>> inputDialog = new Dialog<>();
 		ButtonType addwordButton = new ButtonType("Добавить", ButtonData.OK_DONE);
 	    inputDialog.setTitle("Добавить слово или словосочетание");
@@ -111,14 +112,23 @@ public class Lexicon {
         inputDialog.getDialogPane().getButtonTypes().add(addwordButton);
 	    inputDialog.showAndWait();
 		Lexicon lexicon = new Lexicon(wordInput.getText(), meaningInput.getText());
-		lexiconList = table.getItems();
-		lexiconList.add(lexicon);
-		table.setItems(lexiconList);
+		// checking if a user indeed added a word to a table
+		 word = wordInput.getText();
+	     meaning = meaningInput.getText();
+				if(!word.isEmpty() && !meaning.isEmpty()) {
+					isWordAdded = true;
+					table.getItems().add(lexicon);
+				} else {
+					isWordAdded = false;
+				}	
 		wordInput.clear();
 		meaningInput.clear();	
 	}
 	private int getAmountOfWords() {
 		amountOfWords = table.getItems().size();
 		return amountOfWords;
+	}
+	public boolean isWordAdded() {
+		return isWordAdded;
 	}
 }

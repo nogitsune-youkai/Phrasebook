@@ -17,7 +17,7 @@ public class GUI {
 	 private HBox hBoxBottom = new HBox();
 	 private HBox hBoxText = new HBox();
 	 private Label countLabel = new Label();
-	
+	 
 	 
 	 public void start(Stage primaryStage) {
 		
@@ -29,8 +29,13 @@ public class GUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    addNewWord.setOnAction(event -> { lexicon.add(event) ;}
-	    );
+		addNewWord.setOnAction(event -> { 
+			
+		    lexicon.add(event);
+		    if(lexicon.isWordAdded()) { // just to make sure if a user didn't change his mind on adding a word in the last moment
+		    	countLabel.setText("Количество слов: " + lexicon.getTable().getItems().size());	
+		    }
+		    });
 	    
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
