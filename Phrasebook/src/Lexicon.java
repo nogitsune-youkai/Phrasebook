@@ -38,18 +38,17 @@ public class Lexicon {
 	}
 	
 	ObservableList<Lexicon> initDictionary() throws IOException  {
-			ObservableList<Lexicon> dictionary = FXCollections.observableArrayList();
 			File file = new File("WordList.txt");	
 			file.createNewFile();
 		    Scanner scanner = new Scanner(file);
 			while(scanner.hasNextLine()) { 
 				String word = scanner.nextLine();  
 				String translation = scanner.nextLine();
-				dictionary.add(new Lexicon(word, translation));} 
+				lexiconList.add(new Lexicon(word, translation));} 
 				scanner.close(); // closing file 
-				table.setItems(dictionary);
+				table.setItems(lexiconList);
 				getAmountOfWords();
-				return dictionary;
+				return lexiconList;
 }
 	
 	
