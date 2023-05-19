@@ -64,9 +64,7 @@ public class Lexicon {
 	public void setWordColumn(TableColumn<Lexicon, String> wordColumn) {
 		this.wordColumn = wordColumn;
 	}
-	public TableColumn<Lexicon, String> getTranslationColumn() {
-		return translationColumn;
-	}
+	
 	public void setTranslationColumn(TableColumn<Lexicon, String> translationColumn) {
 		this.translationColumn = translationColumn;
 	}
@@ -74,9 +72,11 @@ public class Lexicon {
 	public String getWord() {
 		return word;
 	}
+	
 	public void setWord(String word) {
 		this.word = word;
 	}
+	
 	public String getMeaning() {
 		return meaning;
 	}
