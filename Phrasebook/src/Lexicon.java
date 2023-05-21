@@ -16,6 +16,7 @@ public class Lexicon {
 	
 	private static final double TABLE_HEIGHT = 579;
 	private static final double TABLE_WIDTH = 694;
+	private static final String FILE_NAME = "WordList.txt";
 	
 	private String word;
 	private String meaning;
@@ -38,14 +39,17 @@ public class Lexicon {
 	}
 	
 	ObservableList<Lexicon> initDictionary() throws IOException  {
-			File file = new File("WordList.txt");	
+		// This method reads the words and translations from a file and adds them to the table
+			File file = new File(FILE_NAME);	
 			file.createNewFile();
-		    Scanner scanner = new Scanner(file);
-			while(scanner.hasNextLine()) { 
+		    try (Scanner scanner = new Scanner(file)) {
+		    	
+			    while(scanner.hasNextLine()) { 
 				String word = scanner.nextLine();  
 				String translation = scanner.nextLine();
 				lexiconList.add(new Lexicon(word, translation));} 
-				scanner.close(); // closing file 
+		    }
+		    
 				table.setItems(lexiconList);
 				getAmountOfWords();
 				return lexiconList;
@@ -94,7 +98,7 @@ public class Lexicon {
 		 translationColumn.setCellValueFactory(new PropertyValueFactory<Lexicon, String>("meaning"));
 	}
 	
-	public void add(ActionEvent event) {	
+	public void addWordToTable(ActionEvent event) {	
 		Dialog<Pair<String, String>> inputDialog = new Dialog<>();
 		ButtonType addwordButton = new ButtonType("Добавить", ButtonData.OK_DONE);
 	    inputDialog.setTitle("Добавить слово или словосочетание");
@@ -111,15 +115,17 @@ public class Lexicon {
         inputDialog.getDialogPane().getButtonTypes().add(addwordButton);
 	    inputDialog.showAndWait();
 		Lexicon lexicon = new Lexicon(wordInput.getText(), meaningInput.getText());
-		// checking if a user indeed added a word to a table
-		 word = wordInput.getText();
-	     meaning = meaningInput.getText();
-				if(!word.isEmpty() && !meaning.isEmpty()) {
-					isWordAdded = true;
-					table.getItems().add(lexicon);
-				} else {
-					isWordAdded = false;
-				}	
+		String word = wordInput.getText();
+	    String meaning = meaningInput.getText();
+	 // checking if a user indeed added a word to a table
+	    
+		if(!word.isEmpty() && !meaning.isEmpty()) {
+		isWordAdded = true;
+		table.getItems().add(lexicon);
+		} else {
+		isWordAdded = false;
+		}	
+		
 		wordInput.clear();
 		meaningInput.clear();	
 	}

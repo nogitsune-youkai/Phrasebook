@@ -34,7 +34,7 @@ public class GUI {
 	    showScene(primaryStage, root); 			
 		addNewWord.setOnAction(event -> { 
 			
-		    lexicon.add(event);
+		    lexicon.addWordToTable(event);
 		    if(lexicon.isWordAdded()) { // just to make sure if a user didn't change his mind on adding a word in the last moment
 		    	countLabel.setText("Количество слов: " + lexicon.getTable().getItems().size());	
 		    }
