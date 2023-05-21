@@ -1,11 +1,13 @@
 import java.io.IOException;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -17,13 +19,15 @@ public class GUI {
      private static final String ADD_NEW_WORD_TEXT = "Добавить слово";
      private static final String SAVE_TEXT = "Сохранить";
      private static final String WORD_COUNT_TEXT = "Количество слов: ";
+     private static final String ABOUT_BUTTON_TEXT = "О программе";
+     
     
 	 private Button addNewWord = new Button(ADD_NEW_WORD_TEXT);
 	 private Button saveButton = new Button(SAVE_TEXT);
+	 private Button aboutButton = new Button(ABOUT_BUTTON_TEXT);
 	 private VBox vBoxButtons = new VBox(); // VBox for buttons
 	 private VBox vBoxWordCount = new VBox(); // VBox for wordCount label
-	 private HBox hBoxBottom = new HBox(); // HBox for bottom panel
-	 private HBox hBoxText = new HBox(); // HBox for text panel
+	 private HBox hBoxText = new HBox(); // HBox for main panel with a table 
 	 private Label countLabel = new Label(); // label which displays a number of words
 	 
 	 
@@ -39,6 +43,9 @@ public class GUI {
 		    	countLabel.setText("Количество слов: " + lexicon.getTable().getItems().size());	
 		    }
 		    });
+		aboutButton.setOnAction(event -> { // action code
+			
+		});
 	}
 
 
@@ -61,13 +68,22 @@ public class GUI {
 		vBoxButtons.getChildren().add(saveButton);
 		vBoxWordCount.getChildren().add(hBoxText);
 		hBoxText.getChildren().add(vBoxButtons);
+		
+		HBox hBoxCount = new HBox(countLabel);
+		hBoxCount.setAlignment(Pos.BOTTOM_LEFT);
+		hBoxCount.setPadding(new Insets(0, 0, 5, 0));
+		
 		countLabel.setText(WORD_COUNT_TEXT + lexicon.getTable().getItems().size());
-		hBoxBottom = new HBox(countLabel);
-		vBoxWordCount.getChildren().add(hBoxBottom);
-        hBoxBottom.setAlignment(Pos.CENTER);
-		hBoxText.setAlignment(Pos.BASELINE_RIGHT);
 		root.setCenter(hBoxText);
-        root.setBottom(vBoxWordCount);
+		HBox hBoxAbout = new HBox(aboutButton); 
+		hBoxAbout.setAlignment(Pos.BASELINE_RIGHT);
+		
+		BorderPane.setMargin(hBoxAbout, new Insets(-4, 15, 0, 0));
+		BorderPane bottomPane = new BorderPane();
+		bottomPane.setLeft(hBoxCount); 
+		bottomPane.setRight(hBoxAbout); 
+		root.setCenter(hBoxText);
+		root.setBottom(bottomPane);
         return root;
 	}
 
