@@ -6,10 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.*;
 
 public class GUI {
 	
@@ -44,7 +47,7 @@ public class GUI {
 		    }
 		    });
 		aboutButton.setOnAction(event -> { // action code
-			
+			GUI.showAboutDialogWindow();
 		});
 	}
 
@@ -98,5 +101,17 @@ public class GUI {
 			e.printStackTrace();
 		}
 		return lexicon;
+	}
+	
+	private static void showAboutDialogWindow() {
+		Dialog<String> aboutWindowDialog = new Dialog<>();
+		VBox dialogVbox = new VBox(20);
+		dialogVbox.getChildren().add(new Text("Разговорник - программа для изучения иностранных слов"));
+		dialogVbox.getChildren().add(new Text("Разработчик: Nogitsune Youkai"));
+	    dialogVbox.getChildren().add(new Text("Версия: 2023-05(1.0)"));
+	    aboutWindowDialog.getDialogPane().setContent(dialogVbox);
+		aboutWindowDialog.setTitle("О программе");
+		aboutWindowDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+		aboutWindowDialog.showAndWait();
 	}
 }
