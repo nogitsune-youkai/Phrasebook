@@ -59,12 +59,15 @@ public class Lexicon {
 	public TableView<Lexicon> getTable() {
 		return table;
 	}
+	
 	public void setTable(TableView<Lexicon> table) {
 		this.table = table;
 	}
+	
 	public TableColumn<Lexicon, String> getWordColumn() {
 		return wordColumn;
 	}
+	
 	public void setWordColumn(TableColumn<Lexicon, String> wordColumn) {
 		this.wordColumn = wordColumn;
 	}
@@ -84,6 +87,7 @@ public class Lexicon {
 	public String getMeaning() {
 		return meaning;
 	}
+	
 	public void setMeaning(String meaning) {
 		this.meaning = meaning;
 	}
@@ -129,11 +133,58 @@ public class Lexicon {
 		wordInput.clear();
 		meaningInput.clear();	
 	}
+	
 	private int getAmountOfWords() {
 		amountOfWords = table.getItems().size();
 		return amountOfWords;
 	}
+	
 	public boolean isWordAdded() {
 		return isWordAdded;
+	}
+	
+	private void searchWord(String word) {
+		  // This method filters the lexiconList by the given word and selects the first matching entry
+		  // If no entry is found, it returns null
+		  Lexicon wordSearch = lexiconList.stream()
+		    .filter(l -> l.getWord().equalsIgnoreCase(word)) // case-insensitive comparison
+		    .findFirst() // get the first matching entry or an empty optional
+		    .orElse(null); // return null if no entry is found, i'm not sure 
+		                   // if simply returning null is a good idea, need to check docs
+		  
+		  table.getSelectionModel().clearSelection();
+		  if (wordSearch != null) {
+			  table.getSelectionModel().select(wordSearch); // selecting found word in the table
+			  table.scrollTo(wordSearch); // scroll to that word in the table
+		  }
+	}
+	
+	
+	// метод для поиска слов в таблице
+	private void searchMeaning(String meaning) {
+		  Lexicon meaningSearch = lexiconList.stream()
+				  .filter(m -> m.getMeaning().equalsIgnoreCase(meaning)) // doing lazy search
+				  .findFirst()
+				  .orElse(null);
+		
+		  table.getSelectionModel().clearSelection();
+		  if (meaningSearch != null) {
+			  table.getSelectionModel().select(meaningSearch); // selecting found word in the table
+			  table.scrollTo(meaningSearch); // scroll to that word in the table
+		  }
+	}
+	
+	public void addSearchListener(GUI gui) {
+		gui.getSearchInput().textProperty().addListener((observable, oldValue, newValue) -> {
+		String searchableWord = gui.getSearchInput().getText(); // getting user's input
+		String searchableMeaning = gui.getSearchInput().getText();
+
+	    if (gui.getWordSearch()) {
+	        searchWord(searchableWord); // Calling a function for a word search
+	      } else {
+	        searchMeaning(searchableMeaning); // Otherwise calling a function for a meaning search
+	      }
+	    });
+		//});
 	}
 }

@@ -8,9 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 
@@ -23,6 +21,7 @@ public class GUI {
      private static final String SAVE_TEXT = "Сохранить";
      private static final String WORD_COUNT_TEXT = "Количество слов: ";
      private static final String ABOUT_BUTTON_TEXT = "О программе";
+     private static final String SEARCH_INPUT_PROMPT_TEXT = "Введите слово";
      
     
 	 private Button addNewWord = new Button(ADD_NEW_WORD_TEXT);
@@ -32,6 +31,10 @@ public class GUI {
 	 private VBox vBoxWordCount = new VBox(); // VBox for wordCount label
 	 private HBox hBoxText = new HBox(); // HBox for main panel with a table 
 	 private Label countLabel = new Label(); // label which displays a number of words
+	 private TextField searchInput = new TextField();
+	 
+	 private CheckBox  meaningSearch = new CheckBox("Поиск по значению");
+	 boolean isWordSearch = !meaningSearch.isSelected(); // Get the value of the check box
 	 
 	 
 	 public void start(Stage primaryStage) {
@@ -39,6 +42,7 @@ public class GUI {
 		Lexicon lexicon = initLexicon();
 	    BorderPane root = createUI(lexicon);
 	    showScene(primaryStage, root); 			
+	    meaningSearch.setSelected(false); // By default, search by word
 		addNewWord.setOnAction(event -> { 
 			
 		    lexicon.addWordToTable(event);
@@ -49,6 +53,14 @@ public class GUI {
 		aboutButton.setOnAction(event -> { // action code
 			GUI.showAboutDialogWindow();
 		});
+		//searchInput.setOnAction(e -> {
+			//lexicon.addSearchListener(this);
+		//});
+	    lexicon.addSearchListener(this);
+	    
+	    meaningSearch.setOnAction(event -> {
+	        isWordSearch = !meaningSearch.isSelected(); // Toggle the value of isWordSearch
+	      });
 	}
 
 
@@ -69,9 +81,12 @@ public class GUI {
 		hBoxText.getChildren().add(lexicon.getTable());
 		vBoxButtons.getChildren().add(addNewWord);
 		vBoxButtons.getChildren().add(saveButton);
+		vBoxButtons.getChildren().add(searchInput);
+		vBoxButtons.getChildren().add(meaningSearch);
 		vBoxWordCount.getChildren().add(hBoxText);
 		hBoxText.getChildren().add(vBoxButtons);
 		
+		searchInput.setPromptText(SEARCH_INPUT_PROMPT_TEXT);
 		HBox hBoxCount = new HBox(countLabel);
 		hBoxCount.setAlignment(Pos.BOTTOM_LEFT);
 		hBoxCount.setPadding(new Insets(0, 0, 5, 0));
@@ -113,5 +128,14 @@ public class GUI {
 		aboutWindowDialog.setTitle("О программе");
 		aboutWindowDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
 		aboutWindowDialog.showAndWait();
+	}
+	
+	public TextField getSearchInput() {
+		return searchInput;
+	}
+
+
+	public boolean getWordSearch() {
+		return isWordSearch;
 	}
 }
