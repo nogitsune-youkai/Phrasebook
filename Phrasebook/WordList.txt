@@ -1,2 +1,332 @@
-временное слово
-temp word
+Абажур
+Lampshade
+Авария
+Accident
+Агент
+Agent
+Адвокат
+Lawyer
+Азарт
+Passion
+Бабочка 
+Butterfly 
+Багаж 
+Luggage 
+Базар 
+Bazaar 
+Бактерия 
+Bacteria 
+Баланс 
+Balance
+Вагон  
+Wagon  
+Ваза  
+Vase  
+Вакцина  
+Vaccine  
+Валюта  
+Currency  
+Вампир  
+Vampire
+Гаджет   
+Gadget   
+Газета   
+Newspaper   
+Галактика   
+Galaxy   
+Галстук   
+Tie   
+Гамбургер   
+Hamburger
+Давление    
+Pressure    
+Дальнобойщик    
+Truck driver    
+Дамба    
+Dam    
+Данные    
+Data    
+Дартс    
+Darts
+Евро     
+Euro     
+Еда     
+Food     
+Ежик     
+Hedgehog     
+Езда     
+Riding     
+Елка     
+Fir tree
+Ёж      
+Hedgehog      
+Ёлка      
+Christmas tree      
+Ёмкость      
+Capacity      
+Ёршик      
+Brush      
+Ёжик ест яблоко.      
+Hedgehog eats apple.
+Жаба      
+Frog      
+Жалоба      
+Complaint      
+Жанр      
+Genre      
+Жара      
+Heat      
+Жвачка      
+Chewing gum
+Забор     
+Fence     
+Завод     
+Plant     
+Загадка     
+Riddle     
+Задача     
+Task     
+Зажигалка     
+Lighter
+Игла
+Needle
+Игра
+Game
+Идея
+Idea
+Изумруд
+Emerald
+Икра
+Caviar
+Кабина
+Cabin
+Каблук
+Heel
+Кадр
+Frame
+Казино
+Casino
+Кактус
+Cactus
+Ладонь
+Palm
+Лампа
+Lamp
+Ластик
+Eraser
+Лев
+Lion
+Ледник
+Glacier
+Магазин
+Shop
+Майка
+T-shirt
+Макароны
+Pasta
+Малыш
+Baby
+Масло
+Butter
+Набор 
+Set 
+Награда 
+Award 
+Надпись 
+Inscription 
+Наклейка 
+Sticker 
+Намерение 
+Intention
+Оазис 
+Oasis 
+Обезьяна 
+Monkey 
+Облако 
+Cloud 
+Обмен 
+Exchange 
+Образ 
+Image
+Павлин 
+Peacock 
+Падение 
+Fall 
+Пазл 
+Puzzle 
+Пакет 
+Package 
+Палец 
+Finger
+Радар  
+Radar  
+Ракета  
+Rocket  
+Рана  
+Wound  
+Расческа  
+Comb  
+Ребус  
+Rebus
+Сабля   
+Saber   
+Салат   
+Salad   
+Самолет   
+Airplane   
+Сандалии   
+Sandals   
+Свеча   
+Candle
+Табак    
+Tobacco    
+Такси    
+Taxi    
+Талант    
+Talent    
+Танец    
+Dance    
+Тарелка    
+Plate
+Уборка     
+Cleaning     
+Уголь     
+Coal     
+Удар     
+Strike     
+Ужин     
+Dinner     
+Указатель     
+Pointer
+Фабрика      
+Factory      
+Файл      
+File      
+Факел      
+Torch      
+Фантазия      
+Fantasy      
+Фасоль      
+Beans
+Халат       
+Robe       
+Хвост       
+Tail       
+Химия       
+Chemistry       
+Хлеб       
+Bread       
+Хобби       
+Hobby
+Царь        
+Tsar        
+Цветок        
+Flower        
+Цель        
+Goal        
+Цирк        
+Circus        
+Цыпленок        
+Chicken
+Чайник         
+Kettle         
+Часы         
+Clock         
+Чемодан         
+Suitcase         
+Черепаха         
+Turtle         
+Чехол         
+Case
+Шампунь          
+Shampoo          
+Шарик          
+Ball          
+Шея          
+Neck          
+Шляпа          
+Hat          
+Шоколад          
+Chocolate
+Щенок           
+Puppy           
+Щетка           
+Brush           
+Щипцы           
+Tongs           
+Щука           
+Pike           
+Щека           
+Cheek
+Экзамен            
+Exam            
+Экран            
+Screen            
+Эксперт            
+Expert            
+Электричество            
+Electricity            
+Эмоция            
+Emotion
+Юбилей             
+Anniversary             
+Юбка             
+Skirt             
+Юла             
+Top             
+Юмор             
+Humor             
+Юность             
+Youth
+Яблоко              
+Apple              
+Ягода              
+Berry              
+Ядерный              
+Nuclear              
+Язык              
+Language              
+Ярость              
+Anger
+Здравствуйте
+Hello
+Как вас зовут?
+What is your name?
+Меня зовут
+My name is
+Откуда вы?
+Where are you from?
+Я из
+I am from
+Как дела?
+How are you?
+У меня все хорошо
+I am fine
+Спасибо за помощь
+Thank you for your help.
+Пожалуйста, не за что
+You are welcome, it's nothing
+Извините, я не понимаю
+Sorry, I don't understand
+Вы говорите по-английски?
+Do you speak English?
+Я говорю по-русски немного
+I speak Russian a little bit
+Где находится?
+Where is?
+Сколько стоит?
+How much is?
+Можно мне?
+Can I have?
+Я хочу заказать
+I want to order
+Я ищу
+I am looking for
+Как пройти к?
+How can I get to?
+Какая сегодня погода?
+What is the weather today?
+Какой сегодня день недели?
+What day of the week is it today?
+Что вы любите делать в свободное время?
+What do you like to do in your free time?
