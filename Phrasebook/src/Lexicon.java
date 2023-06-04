@@ -9,6 +9,8 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Pair;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+
 import java.io.*;
 import java.util.*;
 
@@ -41,7 +43,17 @@ public class Lexicon {
 	ObservableList<Lexicon> initDictionary() throws IOException  {
 		// This method reads the words and translations from a file and adds them to the table
 			File file = new File(FILE_NAME);	
-			file.createNewFile();
+			// checking if file exist, if not, show a message to user
+			if(file.exists() == false) {
+				Dialog<String> fileNotFoundDialog = new Dialog<>();	
+				VBox dialogVbox = new VBox(20);
+				dialogVbox.getChildren().add(new Text("Файл WordList.txt не найден, "
+						 + "он должен находится в одной и той же папке, что и .exe"));
+				fileNotFoundDialog.getDialogPane().setContent(dialogVbox);
+				fileNotFoundDialog.setTitle("Файл не найден");
+				fileNotFoundDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+				fileNotFoundDialog.showAndWait();
+			};
 		    try (Scanner scanner = new Scanner(file)) {
 		    	
 			    while(scanner.hasNextLine()) { 
