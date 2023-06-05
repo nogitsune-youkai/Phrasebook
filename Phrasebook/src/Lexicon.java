@@ -72,37 +72,16 @@ public class Lexicon {
 		return table;
 	}
 	
-	public void setTable(TableView<Lexicon> table) {
-		this.table = table;
-	}
-	
-	public TableColumn<Lexicon, String> getWordColumn() {
-		return wordColumn;
-	}
-	
-	public void setWordColumn(TableColumn<Lexicon, String> wordColumn) {
-		this.wordColumn = wordColumn;
-	}
-	
-	public void setTranslationColumn(TableColumn<Lexicon, String> translationColumn) {
-		this.translationColumn = translationColumn;
-	}
 
 	public String getWord() {
 		return word;
 	}
 	
-	public void setWord(String word) {
-		this.word = word;
-	}
 	
 	public String getMeaning() {
 		return meaning;
 	}
 	
-	public void setMeaning(String meaning) {
-		this.meaning = meaning;
-	}
 	
 	public void initializeColumns() {
 		 wordColumn.setVisible(true);
@@ -155,6 +134,7 @@ public class Lexicon {
 		return isWordAdded;
 	}
 	
+	// function for searching words in the table
 	private void searchWord(String word) {
 		  // This method filters the lexiconList by the given word and selects the first matching entry
 		  // If no entry is found, it returns null
@@ -172,7 +152,7 @@ public class Lexicon {
 	}
 	
 	
-	// метод для поиска слов в таблице
+	// function for searching English meanings of words in the table
 	private void searchMeaning(String meaning) {
 		  Lexicon meaningSearch = lexiconList.stream()
 				  .filter(m -> m.getMeaning().equalsIgnoreCase(meaning)) // doing lazy search
@@ -197,6 +177,5 @@ public class Lexicon {
 	        searchMeaning(searchableMeaning); // Otherwise calling a function for a meaning search
 	      }
 	    });
-		//});
 	}
 }
