@@ -119,6 +119,7 @@ public class Lexicon {
 		table.getItems().add(lexicon);
 		} else {
 		isWordAdded = false;
+		System.gc(); // free memory
 		}	
 		
 		wordInput.clear();
