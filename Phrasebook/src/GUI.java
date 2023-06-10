@@ -3,7 +3,6 @@ import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -15,23 +14,28 @@ import javafx.scene.control.*;
 public class GUI {
 	
 	 private static final String WINDOW_TITLE = "Разговорник";
-     private static final int SCENE_WIDTH = 800;
-     private static final int SCENE_HEIGHT = 600;
-     private static final String ADD_NEW_WORD_TEXT = "Добавить слово";
-     private static final String SAVE_TEXT = "Сохранить";
+     private static final int SCENE_WIDTH = 1024;
+     private static final int SCENE_HEIGHT = 768;
+     private static final String ADD_NEW_WORD_MENU_TEXT = "Добавить слово";
      private static final String WORD_COUNT_TEXT = "Количество слов: ";
-     private static final String ABOUT_BUTTON_TEXT = "О программе";
+     private static final String ABOUT_MENU_TEXT = "О программе";
      private static final String SEARCH_INPUT_PROMPT_TEXT = "Введите слово";
+     private static final String TABLE_MENU_TEXT = "Словарь";
+     private static final String ABOUT_MENU_ITEM_TEXT = "О разработчике";
+     private static final String ABOUT_HELP_MENU_ITEM_TEXT = "Справка";
      
     
-	 private Button addNewWord = new Button(ADD_NEW_WORD_TEXT);
-	 private Button saveButton = new Button(SAVE_TEXT);
-	 private Button aboutButton = new Button(ABOUT_BUTTON_TEXT);
+	 
 	 private VBox vBoxButtons = new VBox(); // VBox for buttons
 	 private VBox vBoxWordCount = new VBox(); // VBox for wordCount label
 	 private HBox hBoxText = new HBox(); // HBox for main panel with a table 
 	 private Label countLabel = new Label(); // label which displays a number of words
-	 private TextField searchInput = new TextField();
+	 private TextField searchInput = new TextField(); 
+	 Menu tableMenu = new Menu(TABLE_MENU_TEXT); //menu for menu bar
+	 Menu aboutProgramm = new Menu(ABOUT_MENU_TEXT);
+	 MenuItem addNewWord = new MenuItem(ADD_NEW_WORD_MENU_TEXT);
+	 MenuItem aboutMenuItem = new MenuItem(ABOUT_MENU_ITEM_TEXT);
+	 MenuItem aboutMenuHelpItem = new MenuItem(ABOUT_HELP_MENU_ITEM_TEXT);
 	 
 	 private CheckBox  meaningSearch = new CheckBox("Поиск по значению");
 	 boolean isWordSearch = !meaningSearch.isSelected(); // Get the value of the check box
@@ -50,12 +54,10 @@ public class GUI {
 		    	countLabel.setText("Количество слов: " + lexicon.getTable().getItems().size());	
 		    }
 		    });
-		aboutButton.setOnAction(event -> { // action code
+		aboutMenuItem.setOnAction(event -> { // action code
 			GUI.showAboutDialogWindow();
 		});
-		//searchInput.setOnAction(e -> {
-			//lexicon.addSearchListener(this);
-		//});
+		
 	    lexicon.addSearchListener(this);
 	    
 	    meaningSearch.setOnAction(event -> {
@@ -78,9 +80,11 @@ public class GUI {
 	private BorderPane createUI(Lexicon lexicon) {
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
+		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
+		tableMenu.getItems().addAll(addNewWord);
+		aboutProgramm.getItems().addAll(aboutMenuItem, aboutMenuHelpItem); // adding submenus to menu bar
+		
 		hBoxText.getChildren().add(lexicon.getTable());
-		vBoxButtons.getChildren().add(addNewWord);
-		vBoxButtons.getChildren().add(saveButton);
 		vBoxButtons.getChildren().add(searchInput);
 		vBoxButtons.getChildren().add(meaningSearch);
 		vBoxWordCount.getChildren().add(hBoxText);
@@ -93,14 +97,11 @@ public class GUI {
 		
 		countLabel.setText(WORD_COUNT_TEXT + lexicon.getTable().getItems().size());
 		root.setCenter(hBoxText);
-		HBox hBoxAbout = new HBox(aboutButton); 
-		hBoxAbout.setAlignment(Pos.BASELINE_RIGHT);
 		
-		BorderPane.setMargin(hBoxAbout, new Insets(-4, 15, 0, 0));
 		BorderPane bottomPane = new BorderPane();
 		bottomPane.setLeft(hBoxCount); 
-		bottomPane.setRight(hBoxAbout); 
 		root.setCenter(hBoxText);
+		root.setTop(menuBar);
 		root.setBottom(bottomPane);
         return root;
 	}
