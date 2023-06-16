@@ -23,7 +23,7 @@ public class GUI {
      private static final String TABLE_MENU_TEXT = "Словарь";
      private static final String ABOUT_MENU_ITEM_TEXT = "О разработчике";
      private static final String ABOUT_HELP_MENU_ITEM_TEXT = "Справка";
-     
+     private static final String TABLE_MENU_ALPHABET_CATALOG_TEXT = "Алфавитный каталог";
     
 	 
 	 private VBox vBoxButtons = new VBox(); // VBox for buttons
@@ -36,6 +36,7 @@ public class GUI {
 	 MenuItem addNewWord = new MenuItem(ADD_NEW_WORD_MENU_TEXT);
 	 MenuItem aboutMenuItem = new MenuItem(ABOUT_MENU_ITEM_TEXT);
 	 MenuItem aboutMenuHelpItem = new MenuItem(ABOUT_HELP_MENU_ITEM_TEXT);
+	 MenuItem alphabetCatalogItem = new MenuItem(TABLE_MENU_ALPHABET_CATALOG_TEXT);
 	 
 	 private CheckBox  meaningSearch = new CheckBox("Поиск по значению");
 	 boolean isWordSearch = !meaningSearch.isSelected(); // Get the value of the check box
@@ -63,6 +64,10 @@ public class GUI {
 	    meaningSearch.setOnAction(event -> {
 	        isWordSearch = !meaningSearch.isSelected(); // Toggle the value of isWordSearch
 	      });
+	    
+	    alphabetCatalogItem.setOnAction(event ->  {
+	    	lexicon.sortByAlphabet();
+	    });
 	}
 
 
@@ -81,7 +86,7 @@ public class GUI {
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
 		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
-		tableMenu.getItems().addAll(addNewWord);
+		tableMenu.getItems().addAll(addNewWord, alphabetCatalogItem);
 		aboutProgramm.getItems().addAll(aboutMenuItem, aboutMenuHelpItem); // adding submenus to menu bar
 		
 		hBoxText.getChildren().add(lexicon.getTable());

@@ -2,10 +2,13 @@ import javafx.collections.FXCollections;
 
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.TreeTableColumn.SortType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Pair;
 import javafx.scene.layout.*;
@@ -26,14 +29,15 @@ public class Lexicon {
 	private TableColumn<Lexicon, String> wordColumn = new TableColumn<Lexicon, String>("Слово");
 	private TableColumn<Lexicon, String> translationColumn = new TableColumn<Lexicon, String>("Перевод");
 	private ObservableList<Lexicon> lexiconList = FXCollections.observableArrayList();
+	private FilteredList<Lexicon> filteredList;
 	private TextField wordInput = new TextField();
 	private TextField meaningInput = new TextField();
 	private int amountOfWords;
 	private boolean isWordAdded;
+	private String chosenLetter;
 	
 	
 	public Lexicon() {
-		
 	}
 	public Lexicon(String word, String meaning) {
 		this.word = word;
@@ -61,7 +65,7 @@ public class Lexicon {
 				String translation = scanner.nextLine();
 				lexiconList.add(new Lexicon(word, translation));} 
 		    }
-		    
+		        
 				table.setItems(lexiconList);
 				getAmountOfWords();
 				return lexiconList;
@@ -178,5 +182,33 @@ public class Lexicon {
 	        searchMeaning(searchableMeaning); // Otherwise calling a function for a meaning search
 	      }
 	    });
+	}
+	
+	public void sortByAlphabet() {
+		List<String> letters = List.of("Показывать все слова","А", "Б", "В", "Г", "Д", "Е",
+				                                         "Ё", "Ж", "З", "И", "Й", "К", 
+				                                         "Л", "М", "Н", "О", "П", "Р", 
+				                                         "С", "Т", "У", "Ф", "Х", "Ц", 
+                                                         "Ч", "Ш", "Щ", "Э", "Ю", "Я");	
+		// Create a dialog box to let the user choose a letter          
+		ChoiceDialog<String> letterChoiceDialog = new ChoiceDialog<String>("Показывать все слова", letters);
+	    letterChoiceDialog.setTitle("Выберите букву");
+	    // If the user does not choose a letter, show the whole table
+	    if(!letterChoiceDialog.showAndWait().isPresent()) {
+	    	table.setItems(lexiconList);
+	    } 
+	    // Get the chosen letter from the dialog box
+		chosenLetter = letterChoiceDialog.getResult(); 
+		
+		// If the chosen letter is null, show the whole table and return
+		if(chosenLetter == null || chosenLetter == letterChoiceDialog.getDefaultChoice()) {
+			table.setItems(lexiconList);	
+			return;
+		}
+		// Filter the lexicon list by the first letter of the word 
+		// and show the filtered list in the table
+		filteredList  = lexiconList.filtered(p -> p.getWord().charAt(0) 
+				== chosenLetter.charAt(0)); 
+		table.setItems(filteredList);	
 	}
 }
