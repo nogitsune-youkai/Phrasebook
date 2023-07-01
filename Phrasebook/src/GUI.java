@@ -44,6 +44,7 @@ public class GUI {
 	 
 	 public void start(Stage primaryStage) {
 		 
+		 
 		Lexicon lexicon = initLexicon();
 	    BorderPane root = createUI(lexicon);
 	    showScene(primaryStage, root); 			
@@ -55,7 +56,7 @@ public class GUI {
 		    	countLabel.setText("Количество слов: " + lexicon.getTable().getItems().size());	
 		    }
 		    });
-		aboutMenuItem.setOnAction(event -> { // action code
+		getAboutMenuItem().setOnAction(event -> { // action code
 			GUI.showAboutDialogWindow();
 		});
 		
@@ -87,13 +88,14 @@ public class GUI {
         //changes when the stage is resized by a user
 		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
 		tableMenu.getItems().addAll(addNewWord, alphabetCatalogItem);
-		aboutProgramm.getItems().addAll(aboutMenuItem, aboutMenuHelpItem); // adding submenus to menu bar
+		getAboutMenuItem().setId("aboutMenuItem");
+		aboutProgramm.getItems().addAll(getAboutMenuItem(), aboutMenuHelpItem); // adding submenus to menu bar
 		
-		hBoxText.getChildren().add(lexicon.getTable());
-		vBoxButtons.getChildren().add(searchInput);
-		vBoxButtons.getChildren().add(meaningSearch);
-		vBoxWordCount.getChildren().add(hBoxText);
-		hBoxText.getChildren().add(vBoxButtons);
+		gethBoxText().getChildren().add(lexicon.getTable());
+		getvBoxButtons().getChildren().add(searchInput);
+		getvBoxButtons().getChildren().add(meaningSearch);
+		getvBoxWordCount().getChildren().add(gethBoxText());
+		gethBoxText().getChildren().add(getvBoxButtons());
 		
 		searchInput.setPromptText(SEARCH_INPUT_PROMPT_TEXT);
 		HBox hBoxCount = new HBox(countLabel);
@@ -101,11 +103,11 @@ public class GUI {
 		hBoxCount.setPadding(new Insets(0, 0, 5, 0));
 		
 		countLabel.setText(WORD_COUNT_TEXT + lexicon.getTable().getItems().size());
-		root.setCenter(hBoxText);
+		root.setCenter(gethBoxText());
 		
 		BorderPane bottomPane = new BorderPane();
 		bottomPane.setLeft(hBoxCount); 
-		root.setCenter(hBoxText);
+		root.setCenter(gethBoxText());
 		root.setTop(menuBar);
 		root.setBottom(bottomPane);
         return root;
@@ -143,5 +145,25 @@ public class GUI {
 
 	public boolean getWordSearch() {
 		return isWordSearch;
+	}
+
+
+	public VBox getvBoxButtons() {
+		return vBoxButtons;
+	}
+
+
+	public HBox gethBoxText() {
+		return hBoxText;
+	}
+
+
+	public VBox getvBoxWordCount() {
+		return vBoxWordCount;
+	}
+
+
+	MenuItem getAboutMenuItem() {
+		return aboutMenuItem;
 	}
 }
