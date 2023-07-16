@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 public class GUITest extends ApplicationTest {
 	GUI guiMock = Mockito.mock(GUI.class);
 	GUI gui = new GUI();
-    Lexicon lexiconMock = Mockito.mock(Lexicon.class); // Создание мок-объекта Lexicon
+    Lexicon lexiconMock = Mockito.mock(Lexicon.class); // Creating mock object Lexicon
     
 	
 	@BeforeAll
@@ -43,7 +43,7 @@ public class GUITest extends ApplicationTest {
         FxAssert.verifyThat("#menuBar", NodeMatchers.isNotNull());
         FxAssert.verifyThat("#menuBar", NodeMatchers.hasChildren(2, ".menu"));
 
-        // check that the first menu has the text "Таблица"
+        // check that the first menu has the text "Словарь"
         FxAssert.verifyThat("#tableMenu", LabeledMatchers.hasText("Словарь"));
 
         // check that the second menu has the text "О программе"
