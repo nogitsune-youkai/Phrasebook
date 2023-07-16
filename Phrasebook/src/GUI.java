@@ -58,6 +58,7 @@ public class GUI {
 		    });
 		getAboutMenuItem().setOnAction(event -> { // action code
 			GUI.showAboutDialogWindow();
+			
 		});
 		
 	    lexicon.addSearchListener(this);
@@ -72,7 +73,7 @@ public class GUI {
 	}
 
 
-	private void showScene(Stage primaryStage, BorderPane root) {
+	void showScene(Stage primaryStage, BorderPane root) {
 		// Setting up a scene, JavaFX Scene class is the container for all content 
         // which makes the scene visible in a given pixel size. 
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
@@ -83,13 +84,16 @@ public class GUI {
 	}
 
 
-	private BorderPane createUI(Lexicon lexicon) {
+	BorderPane createUI(Lexicon lexicon) {
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
 		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
+		menuBar.setId("menuBar");
 		tableMenu.getItems().addAll(addNewWord, alphabetCatalogItem);
+		tableMenu.setId("tableMenu");
 		getAboutMenuItem().setId("aboutMenuItem");
 		aboutProgramm.getItems().addAll(getAboutMenuItem(), aboutMenuHelpItem); // adding submenus to menu bar
+		aboutProgramm.setId("aboutProgramm");
 		
 		gethBoxText().getChildren().add(lexicon.getTable());
 		getvBoxButtons().getChildren().add(searchInput);
@@ -114,7 +118,7 @@ public class GUI {
 	}
 
 
-	private Lexicon initLexicon() {
+	 Lexicon initLexicon() {
 		Lexicon lexicon = new Lexicon(); 
 		lexicon.initializeColumns();
 		try {
