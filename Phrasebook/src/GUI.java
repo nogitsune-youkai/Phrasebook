@@ -89,11 +89,18 @@ public class GUI {
         //changes when the stage is resized by a user
 		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
 		menuBar.setId("menuBar");
+		
 		tableMenu.getItems().addAll(addNewWord, alphabetCatalogItem);
-		tableMenu.setId("tableMenu");
-		getAboutMenuItem().setId("aboutMenuItem");
 		aboutProgramm.getItems().addAll(getAboutMenuItem(), aboutMenuHelpItem); // adding submenus to menu bar
-		aboutProgramm.setId("aboutProgramm");
+		
+		// setting IDs for tableItems, so that TestFX could find them
+		addNewWord.setId(ADD_NEW_WORD_MENU_TEXT);
+		tableMenu.setId(TABLE_MENU_TEXT);
+		aboutProgramm.setId(ABOUT_MENU_TEXT);
+		alphabetCatalogItem.setId(TABLE_MENU_ALPHABET_CATALOG_TEXT);
+		aboutMenuItem.setId(ABOUT_MENU_ITEM_TEXT);
+		aboutMenuHelpItem.setId(ABOUT_HELP_MENU_ITEM_TEXT);
+		
 		
 		gethBoxText().getChildren().add(lexicon.getTable());
 		getvBoxButtons().getChildren().add(searchInput);
@@ -169,5 +176,15 @@ public class GUI {
 
 	MenuItem getAboutMenuItem() {
 		return aboutMenuItem;
+	}
+
+
+	public Menu getTableMenu() {
+		return tableMenu;
+	}
+
+
+	public Menu getAboutProgramm() {
+		return aboutProgramm;
 	}
 }

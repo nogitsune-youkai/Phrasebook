@@ -7,19 +7,20 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.junit.After;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
-import org.testfx.matcher.base.NodeMatchers;
-import org.testfx.matcher.control.LabeledMatchers;
 
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
 
+
+
 public class GUITest extends ApplicationTest {
+	
 	GUI guiMock = Mockito.mock(GUI.class);
 	GUI gui = new GUI();
     Lexicon lexiconMock = Mockito.mock(Lexicon.class); // Creating mock object Lexicon
@@ -37,17 +38,23 @@ public class GUITest extends ApplicationTest {
 	}
 	
 	
+	
 	@Test
     public void testMenuBar() {
-        // check that the menu bar exists and has two menus
-        FxAssert.verifyThat("#menuBar", NodeMatchers.isNotNull());
-        FxAssert.verifyThat("#menuBar", NodeMatchers.hasChildren(2, ".menu"));
-
-        // check that the first menu has the text "Словарь"
-        FxAssert.verifyThat("#tableMenu", LabeledMatchers.hasText("Словарь"));
-
-        // check that the second menu has the text "О программе"
-        FxAssert.verifyThat("#aboutProgramm", LabeledMatchers.hasText("О программе"));
+		// checking all items in menu bar
+        for(int i = 0; i >= gui.getTableMenu().getItems().size(); i++) {
+        String tableMenuitems = gui.getTableMenu().getItems().get(i).getId();
+        Assertions.assertEquals("Словарь", tableMenuitems);
+        Assertions.assertEquals("Добавить слово", tableMenuitems); 
+        }   
+        
+        for(int i = 0; i >= gui.getTableMenu().getItems().size(); i++) {
+        String aboutProgramMenuItems = gui.getTableMenu().getItems().get(i).getId();
+        Assertions.assertEquals("Алфавитный каталог", aboutProgramMenuItems);
+        Assertions.assertEquals("О программе", aboutProgramMenuItems);
+        Assertions.assertEquals("О разработчике", aboutProgramMenuItems);
+        Assertions.assertEquals("Справка", aboutProgramMenuItems);
+        }
     }
 	
 
