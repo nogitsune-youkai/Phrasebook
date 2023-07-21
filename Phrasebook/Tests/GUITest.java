@@ -65,6 +65,7 @@ public class GUITest extends ApplicationTest {
 	@Test
 	public void VerifyInitializationOfLexiconList() throws InterruptedException, ExecutionException, TimeoutException, IOException {
 					
+		
 	    CompletableFuture<Void> future = new CompletableFuture<>();
 		Platform.runLater(() -> {
 				
@@ -79,7 +80,7 @@ public class GUITest extends ApplicationTest {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		}
-		future.complete(null);    
+		future.complete(null); // finish the program
 	});
 		future.get(5, TimeUnit.SECONDS);
 		// checking if these there was invocation on these functions
@@ -87,5 +88,15 @@ public class GUITest extends ApplicationTest {
 		Mockito.verify(lexiconMock).initDictionary();
 	}
 	
+	@Test
+	public void showAboutDialogWindowTest()  throws InterruptedException, ExecutionException, TimeoutException, IOException {
+		CompletableFuture<Void> future = new CompletableFuture<>();
+		Platform.runLater(() -> {
+		guiMock.showAboutDialogWindow();
+		future.complete(null); // finish the program
+		});
+		future.get(5, TimeUnit.SECONDS);
+		Mockito.verify(guiMock).showAboutDialogWindow();;
+	}
 }
 

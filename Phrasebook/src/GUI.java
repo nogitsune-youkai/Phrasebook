@@ -57,7 +57,7 @@ public class GUI {
 		    }
 		    });
 		getAboutMenuItem().setOnAction(event -> { // action code
-			GUI.showAboutDialogWindow();
+			this.showAboutDialogWindow();
 			
 		});
 		
@@ -137,7 +137,7 @@ public class GUI {
 		return lexicon;
 	}
 	
-	private static void showAboutDialogWindow() {
+	 void showAboutDialogWindow() {
 		Dialog<String> aboutWindowDialog = new Dialog<>();
 		VBox dialogVbox = new VBox(20);
 		dialogVbox.getChildren().add(new Text("Разговорник - программа для изучения иностранных слов"));
