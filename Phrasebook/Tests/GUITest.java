@@ -24,16 +24,19 @@ public class GUITest extends ApplicationTest {
 	GUI guiMock = Mockito.mock(GUI.class);
 	GUI gui = new GUI();
     Lexicon lexiconMock = Mockito.mock(Lexicon.class); // Creating mock object Lexicon
+    private Stage primaryStage;
+    
     
 	
 	@BeforeAll
     static void setUpClass() throws Exception {
-    	ApplicationTest.launch(Phrasebook.class);
+    	ApplicationTest.launch(Phrasebook.class); // launch app thread
     }
 	
 	@After
 	public void start(Stage stage) throws Exception { 
 		gui.start(stage);
+		this.primaryStage = stage;
         stage.show();
 	}
 	
@@ -68,8 +71,7 @@ public class GUITest extends ApplicationTest {
 		
 	    CompletableFuture<Void> future = new CompletableFuture<>();
 		Platform.runLater(() -> {
-				
-				
+							
 		guiMock.start(new Stage());
 		guiMock.initLexicon();
 				
@@ -89,6 +91,17 @@ public class GUITest extends ApplicationTest {
 	}
 	
 	@Test
+	public void amountOfWordsTest() {
+		Assertions.assertEquals("Количество слов: 166", gui.getCountLabel().getText());
+	}
+	
+	
+	@Test
+	public void showSceneTest()  {		
+		Assertions.assertEquals(true, primaryStage.isShowing());
+	}
+	
+	@Test
 	public void showAboutDialogWindowTest()  throws InterruptedException, ExecutionException, TimeoutException, IOException {
 		CompletableFuture<Void> future = new CompletableFuture<>();
 		Platform.runLater(() -> {
@@ -96,7 +109,7 @@ public class GUITest extends ApplicationTest {
 		future.complete(null); // finish the program
 		});
 		future.get(5, TimeUnit.SECONDS);
-		Mockito.verify(guiMock).showAboutDialogWindow();;
+		Mockito.verify(guiMock).showAboutDialogWindow(); // check if function was invoked
 	}
 }
 

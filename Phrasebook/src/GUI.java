@@ -73,7 +73,7 @@ public class GUI {
 	}
 
 
-	void showScene(Stage primaryStage, BorderPane root) {
+	static void showScene(Stage primaryStage, BorderPane root) {
 		// Setting up a scene, JavaFX Scene class is the container for all content 
         // which makes the scene visible in a given pixel size. 
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
@@ -88,7 +88,7 @@ public class GUI {
 		BorderPane root = new BorderPane(); //the root node's size tracks the scene's size and 
         //changes when the stage is resized by a user
 		MenuBar menuBar = new MenuBar(tableMenu, aboutProgramm); // creating menuBar with specified items
-		menuBar.setId("menuBar");
+		
 		
 		tableMenu.getItems().addAll(addNewWord, alphabetCatalogItem);
 		aboutProgramm.getItems().addAll(getAboutMenuItem(), aboutMenuHelpItem); // adding submenus to menu bar
@@ -186,5 +186,10 @@ public class GUI {
 
 	public Menu getAboutProgramm() {
 		return aboutProgramm;
+	}
+
+
+	public Label getCountLabel() {
+		return countLabel;
 	}
 }
