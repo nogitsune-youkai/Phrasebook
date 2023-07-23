@@ -146,7 +146,7 @@ public class GUI {
 		VBox dialogVbox = new VBox(20);
 		dialogVbox.getChildren().add(new Text("Разговорник - программа для изучения иностранных слов"));
 		dialogVbox.getChildren().add(new Text("Разработчик: Nogitsune Youkai"));
-	    dialogVbox.getChildren().add(new Text("Версия: 2023-05(1.0)"));
+	    dialogVbox.getChildren().add(new Text("Версия: 2023-07(1.0)"));
 	    aboutWindowDialog.getDialogPane().setContent(dialogVbox);
 		aboutWindowDialog.setTitle("О программе");
 		aboutWindowDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
