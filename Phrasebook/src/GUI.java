@@ -61,6 +61,10 @@ public class GUI {
 			
 		});
 		
+		aboutMenuHelpItem.setOnAction(event -> {
+			this.showHelpDialogWindow();
+		});
+		
 	    lexicon.addSearchListener(this);
 	    
 	    meaningSearch.setOnAction(event -> {
@@ -147,6 +151,15 @@ public class GUI {
 		aboutWindowDialog.setTitle("О программе");
 		aboutWindowDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
 		aboutWindowDialog.showAndWait();
+	}
+	 
+	void showHelpDialogWindow() {
+		Dialog<String> helpWindowDialog = new Dialog<>();
+		VBox dialogVbox = new VBox(20);
+		dialogVbox.getChildren().add(new Text("Здесь должна быть справка"));
+		helpWindowDialog.getDialogPane().setContent(dialogVbox);
+		helpWindowDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+		helpWindowDialog.showAndWait();
 	}
 	
 	public TextField getSearchInput() {
