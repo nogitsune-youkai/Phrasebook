@@ -31,12 +31,12 @@ public class GUI {
 	 private HBox hBoxText = new HBox(); // HBox for main panel with a table 
 	 private Label countLabel = new Label(); // label which displays a number of words
 	 private TextField searchInput = new TextField(); 
-	 Menu tableMenu = new Menu(TABLE_MENU_TEXT); //menu for menu bar
-	 Menu aboutProgramm = new Menu(ABOUT_MENU_TEXT);
-	 MenuItem addNewWord = new MenuItem(ADD_NEW_WORD_MENU_TEXT);
-	 MenuItem aboutMenuItem = new MenuItem(ABOUT_MENU_ITEM_TEXT);
-	 MenuItem aboutMenuHelpItem = new MenuItem(ABOUT_HELP_MENU_ITEM_TEXT);
-	 MenuItem alphabetCatalogItem = new MenuItem(TABLE_MENU_ALPHABET_CATALOG_TEXT);
+	 private Menu tableMenu = new Menu(TABLE_MENU_TEXT); //menu for menu bar
+	 private Menu aboutProgramm = new Menu(ABOUT_MENU_TEXT);
+	 private MenuItem addNewWord = new MenuItem(ADD_NEW_WORD_MENU_TEXT);
+	 private MenuItem aboutMenuItem = new MenuItem(ABOUT_MENU_ITEM_TEXT);
+	 private MenuItem aboutMenuHelpItem = new MenuItem(ABOUT_HELP_MENU_ITEM_TEXT);
+	 private MenuItem alphabetCatalogItem = new MenuItem(TABLE_MENU_ALPHABET_CATALOG_TEXT);
 	 
 	 private CheckBox  meaningSearch = new CheckBox("Поиск по значению");
 	 boolean isWordSearch = !meaningSearch.isSelected(); // Get the value of the check box
